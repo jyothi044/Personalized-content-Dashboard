@@ -2,6 +2,8 @@
 
 A modern, dashboard that curates news, movies, and social media content based on your preferences. Built with React, TypeScript, and Tailwind CSS.
 
+View the link : https://personalized-contentt-dashboard.netlify.app/
+
 ![Dashboard Preview](https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1200)
 
 ## ✨ Features
