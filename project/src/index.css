@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  /* Glass morphism utilities */
+  .glass {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20;
+  }
+  
+  .glass-dark {
+    @apply bg-gray-900/10 backdrop-blur-lg border border-gray-700/20;
+  }
+
+  /* Gradient text utilities */
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 bg-clip-text text-transparent;
+  }
+  
+  .gradient-text-dark {
+    @apply bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent;
+  }
+
+  /* Custom shadow utilities */
+  .shadow-glow {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+  }
+  
+  .shadow-glow-purple {
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.15);
+  }
+  
+  .shadow-glow-teal {
+    box-shadow: 0 0 20px rgba(20, 184, 166, 0.15);
+  }
+}
+
+/* Enhanced scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100/50 dark:bg-gray-800/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-b from-blue-400 to-purple-500 rounded-full;
+  transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply from-blue-500 to-purple-600;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+::-webkit-scrollbar-corner {
+  @apply bg-transparent;
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Enhanced React Beautiful DnD drag styles */
+.react-beautiful-dnd-dragging {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+  transform: rotate(3deg) scale(1.05) !important;
+  z-index: 1000 !important;
+}
+
+.react-beautiful-dnd-drag-handle:hover {
+  cursor: grab !important;
+}
+
+.react-beautiful-dnd-drag-handle:active {
+  cursor: grabbing !important;
+}
+
+/* Enhanced loading animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Enhanced focus styles for accessibility */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+/* Card hover effects */
+.group:hover .group-hover\:scale-105 {
+  transform: scale(1.05);
+}
+
+.group:hover .group-hover\:scale-110 {
+  transform: scale(1.1);
+}
+
+/* Enhanced dark mode improvements */
+.dark {
+  color-scheme: dark;
+}
+
+.dark .glass {
+  @apply bg-gray-900/30 border-gray-700/30;
+}
+
+/* Backdrop blur fallback */
+@supports not (backdrop-filter: blur(12px)) {
+  .backdrop-blur-xl {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .dark .backdrop-blur-xl {
+    background-color: rgba(17, 24, 39, 0.9);
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bg-gradient-to-r {
+    background: currentColor !important;
+  }
+  
+  .text-gray-500 {
+    color: #000 !important;
+  }
+  
+  .dark .text-gray-500 {
+    color: #fff !important;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom selection colors */
+::selection {
+  background: rgba(59, 130, 246, 0.2);
+  color: inherit;
+}
+
+::-moz-selection {
+  background: rgba(59, 130, 246, 0.2);
+  color: inherit;
+}
+
+/* Enhanced button styles */
+.btn-primary {
+  @apply bg-gradient-to-r from-blue-500 via-purple-500 to-teal-500 text-white font-semibold py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105;
+}
+
+.btn-secondary {
+  @apply bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-semibold py-3 px-6 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-105;
+}
+
+/* Enhanced form styles */
+.form-input {
+  @apply w-full px-4 py-3 bg-gray-100/80 dark:bg-gray-800/80 border border-gray-300/50 dark:border-gray-600/50 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 dark:text-white placeholder-gray-500 transition-all duration-200 backdrop-blur-sm;
+}
+
+/* Enhanced card styles */
+.card {
+  @apply bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-3xl shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-200/50 dark:border-gray-700/50;
+}
+
+.card-hover {
+  @apply hover:scale-[1.02] hover:-translate-y-1;
+}
